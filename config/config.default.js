@@ -40,6 +40,7 @@ module.exports = appInfo => {
       httpOnly: true,
       encrypt: true,
     },
+    middleware: ['clientAuth'],
     userrole: {
       failureHandler(action) {
         switch (action) {

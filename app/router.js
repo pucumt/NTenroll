@@ -11,7 +11,7 @@ module.exports = app => {
 
   // client side rules
   app.get('/client/login', app.controller.client.login.login);
-  app.get('/client/personalCenter', user, app.controller.client.personalCenter.index);
+  app.get('/client/personalCenter', app.middleware.clientAuth(), app.controller.client.personalCenter.index);
   //app.controller.client.middleware.auth(),
   // app.resources('client/users', '/client/users', app.role.can('user'), app.controller.client.user);
 
