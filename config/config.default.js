@@ -40,19 +40,19 @@ module.exports = appInfo => {
       httpOnly: true,
       encrypt: true,
     },
-    middleware: ['clientAuth'],
-    userrole: {
-      failureHandler(action) {
-        switch (action) {
-          case 'user':
-            this.status = 403;
-            this.redirect('/client/login');
-            break;
-          default:
-            break;
-        }
-      },
-    }
+    // middleware: ['clientAuth'],
+    // userrole: {
+    //   failureHandler(action) {
+    //     switch (action) {
+    //       case 'user':
+    //         this.status = 403;
+    //         this.redirect('/client/login');
+    //         break;
+    //       default:
+    //         break;
+    //     }
+    //   },
+    // }
   };
 
   // should change to your own
