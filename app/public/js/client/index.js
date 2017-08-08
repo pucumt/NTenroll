@@ -1,5 +1,5 @@
 var hideConfirmForm;
-window.showAlert = function(msg, title, callback) {
+window.showAlert = function (msg, title, callback) {
     $('#confirmModal').show();
     $('#confirmModal #confirmModalLabel').text(title || "提示");
     $('#confirmModal .modal-body').text(msg);
@@ -7,13 +7,13 @@ window.showAlert = function(msg, title, callback) {
     $('#confirmModal .modal-footer .btn-default').text("确定");
     $('#confirmModal #btnConfirmSave').hide();
 
-    hideConfirmForm = function() {
+    hideConfirmForm = function () {
         callback && callback();
         $('#confirmModal').hide();
     };
 };
 
-window.showConfirm = function(msg, title, hidecallback) {
+window.showConfirm = function (msg, title, hidecallback) {
     $('#confirmModal').show();
     $('#confirmModal #confirmModalLabel').text(title || "确认");
     $('#confirmModal .modal-body').text(msg);
@@ -21,55 +21,62 @@ window.showConfirm = function(msg, title, hidecallback) {
     $('#confirmModal .modal-footer .btn-default').text("取消");
     $('#confirmModal #btnConfirmSave').show();
 
-    hideConfirmForm = function() {
+    hideConfirmForm = function () {
         hidecallback && hidecallback();
         $('#confirmModal').hide();
     };
 };
 
-$(document).ready(function() {
-    $("#btnExam").on("click", function(e) {
+$(document).ready(function () {
+    $("#btnExam").on("click", function (e) {
         location.href = "/enrollExam";
     });
-    $("#btnClass").on("click", function(e) {
+    $("#btnClass").on("click", function (e) {
         location.href = "/enrollClass";
     });
-    $("#btnPersonal").on("click", function(e) {
+    $("#btnPersonal").on("click", function (e) {
         location.href = "/personalCenter";
     });
 
-    $("#btnOpenId").on("click", function(e) {
+    $("#btnOpenId").on("click", function (e) {
         location.href = "/openIdGeter";
     });
 
-    $('#confirmModal #btnConfirmSave').on("click", function(e) {
+    $('#confirmModal #btnConfirmSave').on("click", function (e) {
 
     });
 
-    $('#confirmModal .modal-footer .btn-default').on("click", function(e) {
+    $('#confirmModal .modal-footer .btn-default').on("click", function (e) {
         hideConfirmForm();
     });
-
 });
 
 
-window.selfAjax = function(method, url, filter, callback) {
+window.selfAjax = function (method, url, filter, callback) {
     loading();
+    if (!filter) {
+        filter = {};
+    }
+    filter._csrf = $("#_csrf").val();
+
     return $[method](
         url,
         filter
-    ).then(function(data) {
+    ).then(function (data) {
         callback(data);
         hideLoading();
         return data;
     });
 };
 
-window.loading = function() {
-    $("#loadingIndicator").modal({ backdrop: 'static', keyboard: false });
+window.loading = function () {
+    $("#loadingIndicator").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
 };
 
-window.hideLoading = function() {
+window.hideLoading = function () {
     $("#loadingIndicator").modal('hide');
 };
 //Html编码获取Html转义实体  

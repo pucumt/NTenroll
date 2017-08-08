@@ -1,23 +1,23 @@
 {% extends "Client/partial/main-header.html" %} {% block main %}
 <div class="login content_body">
-    <form id="loginForm" method="post" action="/login">
+    <form id="loginForm" method="post" action="/client/login">
         <div class="form-group">
-            <label>还没有账号？去<a href="/reg">注册</a></label>
+            <label>还没有账号？去<a href="/client/reg">注册</a></label>
         </div>
         <div class="form-group">
-            <label>用户名(手机号)</label>
-            <input class="form-control" maxlength="20" type="text" name="name" />
+            <label>身份证</label>
+            <input class="form-control" maxlength="18" type="text" name="name" id="name" />
         </div>
         <div class="form-group">
             <label>密码(6-15位)</label>
-            <input class="form-control" maxlength="15" type="password" name="password" />
+            <input class="form-control" maxlength="15" type="password" name="password" id="password" />
         </div>
         <div class="form-group">
             <label class="warning"></label>
         </div>
         <div class="form-group">
             <label style="height:34px;">&nbsp;</label>
-            <input class="pull-right btn btn-large btn-primary" type="submit" value="登录" />
+            <input class="pull-right btn btn-large btn-primary" id="btnLogin" type="button" value="登录" />
         </div>
     </form>
 </div>

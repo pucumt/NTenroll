@@ -1,21 +1,17 @@
 'use strict';
 
 module.exports = app => {
-  // const user = app.role.can('user');
-
   app.get('/init', app.controller.init.install);
 
-  app.get('/', 'home.index');
-  app.get('/news', app.controller.news.list);
-  app.get('/user/:id', app.controller.user.info);
-
   // client side rules
-  app.get('/client/login', app.controller.client.login.login);
+  app.get('/client/login', app.controller.client.personalCenter.login);
+  app.get('/client/reg', app.controller.client.personalCenter.reg);
   app.get('/client/personalCenter', app.middleware.auth.clientAuth(), app.controller.client.personalCenter.index);
-  //app.controller.client.middleware.auth(),
-  // app.middleware.clientAuth(),
-  // app.resources('client/users', '/client/users', app.role.can('user'), app.controller.client.user);
 
+  app.post('/client/login', app.controller.client.user.login);
+  app.post('/client/reg', app.controller.client.user.reg);
+
+  // app.resources('client/users', '/client/users', 'client.users');
   // server side rules
 
 };

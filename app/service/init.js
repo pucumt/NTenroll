@@ -1,5 +1,5 @@
 module.exports = app => {
-    return class init extends app.Service { *
+    return class init extends app.Service {*
         install() {
             // 假如 我们拿到用户 id 从数据库获取用户详细信息
             // DROP TABLE IF EXISTS `users`;
@@ -8,6 +8,10 @@ module.exports = app => {
             const result = yield app.mysql.query("CREATE TABLE IF NOT EXISTS `users` (" +
                 "`_id` int(11) NOT NULL AUTO_INCREMENT," +
                 "`name` varchar(20) NOT NULL," +
+                "`password` varchar(20) NOT NULL," +
+                "`idCard` varchar(20) NOT NULL," +
+                "`mobile` varchar(11) NOT NULL," +
+                "`email` varchar(20) NULL," + //用于找回密码？
                 "`createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP," +
                 "`updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP," +
                 "`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," +
@@ -15,7 +19,7 @@ module.exports = app => {
                 "UNIQUE KEY `name_UNIQUE` (`name`)" +
                 ") ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;");
             // alter table users AUTO_INCREMENT = 10000;
-            yield app.mysql.query("alter table users AUTO_INCREMENT = 10000;");
+            yield app.mysql.query("alter table users AUTO_INCREMENT = 1;");
 
             return {
                 result,

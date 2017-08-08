@@ -1,6 +1,6 @@
 {
   "extends": "eslint-config-egg",
   "rules": {
-    "eol-last": "never"
+    "eol-last": 0
   }
 }
