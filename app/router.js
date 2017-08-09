@@ -10,6 +10,7 @@ module.exports = app => {
 
   app.post('/client/login', app.controller.client.user.login);
   app.post('/client/reg', app.controller.client.user.reg);
+  app.post('/client/update', app.controller.client.user.update);
 
   // app.resources('client/users', '/client/users', 'client.users');
   // server side rules

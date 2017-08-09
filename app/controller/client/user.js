@@ -34,6 +34,17 @@ module.exports = app => {
         };
       }
     }
+
+    * update() {
+      const isSucess = yield this.service.client.user.update();
+      if (isSucess) {
+        this.ctx.body = {};
+      } else {
+        this.ctx.body = {
+          error: '更新失败'
+        };
+      }
+    }
   }
   return LoginController;
 };

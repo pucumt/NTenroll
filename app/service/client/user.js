@@ -30,7 +30,9 @@ module.exports = app => {
                 mobile: '11111111111'
             }, {
                 where: {
-                    _id: 3
+                    _id: {
+                        $gte: 3
+                    }
                 },
             });
             return user;

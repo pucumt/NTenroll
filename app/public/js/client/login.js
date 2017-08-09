@@ -24,7 +24,7 @@ $(document).ready(function () {
     $("#btnLogin").on("click", function (e) {
         var validator = $('#loginForm').data('formValidation').validate();
         if (validator.isValid()) {
-            selfAjax("post", "/client/login", {
+            selfAjax("post", "/client/update", {
                 idCard: $("#name").val(),
                 password: $("#password").val()
             }, function (data) {
