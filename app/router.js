@@ -1,6 +1,12 @@
 'use strict';
 
 module.exports = app => {
+  app.beforeStart(function* () {
+    yield app.model.sync({
+      force: true
+    });
+  });
+
   app.get('/init', app.controller.init.install);
 
   // client side rules

@@ -11,11 +11,8 @@ module.exports = {
     enable: true,
     package: 'egg-view-nunjucks'
   },
-  mysql: {
+  sequelize: {
     enable: true,
-    package: 'egg-mysql',
-  },
-  userrole: {
-    package: 'egg-userrole',
+    package: 'egg-sequelize'
   }
 };

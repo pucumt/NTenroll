@@ -15,24 +15,13 @@ module.exports = appInfo => {
       pageSize: 5,
       serverUrl: 'https://hacker-news.firebaseio.com/v0',
     },
-    mysql: {
-      // 单数据库信息配置
-      client: {
-        // host
-        host: '127.0.0.1',
-        // 端口号
-        port: '3306',
-        // 用户名
-        user: 'root',
-        // 密码
-        password: 'password',
-        // 数据库名
-        database: 'test',
-      },
-      // 是否加载到 app 上，默认开启
-      app: true,
-      // 是否加载到 agent 上，默认关闭
-      agent: false,
+    sequelize: {
+      dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
+      database: 'test',
+      host: '127.0.0.1',
+      port: '3306',
+      username: 'root',
+      password: 'password'
     },
     session: {
       key: 'EGG_SESS',
@@ -45,19 +34,6 @@ module.exports = appInfo => {
         headerName: 'x-csrf-token', // 通过 header 传递 CSRF token 的默认字段为 x-csrf-token
       },
     }
-    // middleware: ['clientAuth'],
-    // userrole: {
-    //   failureHandler(action) {
-    //     switch (action) {
-    //       case 'user':
-    //         this.status = 403;
-    //         this.redirect('/client/login');
-    //         break;
-    //       default:
-    //         break;
-    //     }
-    //   },
-    // }
   };
 
   // should change to your own
